@@ -1,4 +1,4 @@
-Spider Man 3 Fix
+# Spider Man 3 Fix
 
 simply go to releases download SpiderMan3Fix.zip put the d3d9.dll and d3d9.ini into your game folder next to the game exe and your good to go 
 
