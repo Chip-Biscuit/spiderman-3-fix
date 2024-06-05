@@ -1,6 +1,6 @@
 # spiderman-3-fix
 
-simply go to release download the zip and put the d3d9.dll and d3d9.ini into your game folder next to the game exe and your good to go 
+simply go to releases download the zip and put the d3d9.dll and d3d9.ini into your game folder next to the game exe and your good to go 
 
 FOV mod is off by default (0) in the ini you have 3 options to choose from in this fix, slightly zoomed out, a bit more zoomed out and mega zoomed out (1),(2) or (3) 
 
