@@ -1,21 +1,34 @@
-# spiderman-3-fix
+# hp-half-blood-prince-fix
 
-simply go to releases download the zip and put the d3d9.dll and d3d9.ini into your game folder next to the game exe and your good to go 
 
-FOV mod is off by default (0) in the ini you have 3 options to choose from in this fix, slightly zoomed out, a bit more zoomed out and mega zoomed out (1),(2) or (3) 
+This is the Harry Potter and the Half Blood Prince d3d9 wrapper which is based from 13AG d3d9.dll wrapper
+
+https://github.com/ThirteenAG/d3d9-wrapper
+
+Make sure you launch the game one time before you use this fix, go to new game or continue game, go to video and make sure your resolution is 640 x 480 for the d3d9.dll to work 
+
+simply put the d3d9.dll and d3d9.ini into your game folder next to the game exe and your good to go 
 
 you can edit settings in d3d9.ini 
 
-fullscreen resolution is set to (0) by default this is off or 1920 x 1080 make sure your set to 1920 x 1080 in game for the d3d9.dll resolution fix to work and then you can choose whatever resolution you want from the d3d9.ini
+Default for resolution is 2 (1920 x 1080)
 
-aspect ratio is calculated by the resolution you set in the ini.   
+For aspect ratio in this game you need to set two settings if you go above 16:10 which is explained in the ini 
 
-Default for FPS cap is 60 you can change it to whatever number you like or uncap with 0 (set vsync to fast in your pc to avoid screen tearing above your monitors refresh rate)
+Default aspect ratio is 0 which is (16:9)   
+
+Default for FOV is 0 you can change it as you like or turn off with 0 to have origional game FOV (57.295776)
+
+if you would like to leave feedback or submit a bug please use the form provided:
+
+https://docs.google.com/forms/d/e/1FAIpQLSc6MLN22hwBFt9-oCHEdx3wGVzis4HCzEpBMWXC5Oc1KTTupg/viewform?usp=sharing
 
 brought to you by Fix Enhancers 
+
+[this fix as it stands is a beta and the game is still being looked into so future updates will be posted so keep an eye out] 
+
+FPS uncap is being worked on at the moment and will come in the future for this game.
 
 Team: 
 
 Chip, JokerAlex21, JukedLuke, Blankname.
-
-credit to 13AG for d3d9hook base code.
