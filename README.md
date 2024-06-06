@@ -16,6 +16,6 @@ brought to you by Fix Enhancers
 
 Team: 
 
-Chip, JokerAlex21, JukedLuke, Blankname.
+Chip, JokerAlex21.
 
 credit to 13AG for d3d9hook base code.
