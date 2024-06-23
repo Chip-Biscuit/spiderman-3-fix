@@ -69,6 +69,11 @@ int nResolution;
 
 char WinDir[MAX_PATH + 1];
 
+bool toggle = false;
+
+// Function prototype for the hotkey thread
+DWORD WINAPI HotkeyThread(LPVOID lpParam);
+
 // List of registered window classes and procedures
 // WORD classAtom, ULONG_PTR WndProcPtr
 std::vector<std::pair<WORD, ULONG_PTR>> WndProcList;
@@ -352,6 +357,93 @@ void PerformHexEdits4() {
 }
 
 // chip - 4 : fps2 
+//=======================================================================================================================================================================================
+//=======================================================================================================================================================================================
+// chip - 5: fps5
+
+
+
+// Function to perform the hex edit
+void PerformHexEdits5() {
+    float floatNewValue = 0.03333333135f;
+
+    // Define the offset to write the new float value
+    DWORD offset = 0x00D09604;
+
+    // Open the process to write memory
+    HANDLE hProcess = OpenProcess(PROCESS_VM_WRITE | PROCESS_VM_OPERATION, FALSE, GetCurrentProcessId());
+    if (hProcess == NULL) {
+        DX_ERROR("Failed to open process.")
+            return;
+    }
+
+    // Change memory protection to allow writing
+    DWORD oldProtect;
+    if (!VirtualProtectEx(hProcess, reinterpret_cast<LPVOID>(offset), sizeof(float), PAGE_EXECUTE_READWRITE, &oldProtect)) {
+        DX_ERROR("Failed to change memory protection.")
+            return;
+    }
+
+    // Write the new value to memory
+    if (!WriteProcessMemory(hProcess, reinterpret_cast<LPVOID>(offset), &floatNewValue, sizeof(float), NULL)) {
+        DX_ERROR("Failed to write memory.")
+            return;
+    }
+
+    // Restore original protection
+    DWORD dummy;
+    if (!VirtualProtectEx(hProcess, reinterpret_cast<LPVOID>(offset), sizeof(float), oldProtect, &dummy)) {
+        DX_ERROR("Failed to restore memory protection.")
+            return;
+    }
+
+    DX_PRINT("Value successfully updated.")
+}
+
+// chip - 5: fps5
+//=======================================================================================================================================================================================
+//=======================================================================================================================================================================================
+// chip - 6: fps6
+
+
+// Function to perform the hex edit
+void PerformHexEdits6() {
+    float floatNewValue = 30.3f;
+
+    // Define the offset to write the new float value
+    DWORD offset = 0x0011069D0;
+
+    // Open the process to write memory
+    HANDLE hProcess = OpenProcess(PROCESS_VM_WRITE | PROCESS_VM_OPERATION, FALSE, GetCurrentProcessId());
+    if (hProcess == NULL) {
+        DX_ERROR("Failed to open process.")
+            return;
+    }
+
+    // Change memory protection to allow writing
+    DWORD oldProtect;
+    if (!VirtualProtectEx(hProcess, reinterpret_cast<LPVOID>(offset), sizeof(float), PAGE_EXECUTE_READWRITE, &oldProtect)) {
+        DX_ERROR("Failed to change memory protection.")
+            return;
+    }
+
+    // Write the new value to memory
+    if (!WriteProcessMemory(hProcess, reinterpret_cast<LPVOID>(offset), &floatNewValue, sizeof(float), NULL)) {
+        DX_ERROR("Failed to write memory.")
+            return;
+    }
+
+    // Restore original protection
+    DWORD dummy;
+    if (!VirtualProtectEx(hProcess, reinterpret_cast<LPVOID>(offset), sizeof(float), oldProtect, &dummy)) {
+        DX_ERROR("Failed to restore memory protection.")
+            return;
+    }
+
+    DX_PRINT("Value successfully updated.")
+}
+
+// chip - 6 : fps6 
 //=======================================================================================================================================================================================
 void HookModule(HMODULE hmod);
 
@@ -1219,9 +1311,8 @@ void HookImportedModules()
 }
 
 
-
-
 bool WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
+
 {
     switch (dwReason)
     {
@@ -1244,12 +1335,9 @@ bool WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
         PerformHexEdits();
 
         PerformHexEdits2();
-
-        PerformHexEdits3();
-
-        PerformHexEdits4();
-              
-
+                        
+        // Create a thread to handle hotkey functionality
+        CreateThread(NULL, 0, HotkeyThread, NULL, 0, NULL);
 
         //chip
         //========================================================================================================================
@@ -1365,6 +1453,35 @@ bool WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
     break;
     }
     return true;
+}
+
+DWORD WINAPI HotkeyThread(LPVOID lpParam) {
+    while (true) {
+        // Check if the '9' key is pressed
+        if (GetAsyncKeyState('9') & 0x8000) {
+            // Debounce the key press
+            Sleep(200);
+
+            // Toggle the boolean flag
+            toggle = !toggle;
+            std::cout << "Toggled to: " << (toggle ? "ON" : "OFF") << std::endl;
+
+            // Perform hex edits based on the toggle flag
+            if (toggle) {
+                PerformHexEdits3();
+                PerformHexEdits4();
+            }
+            else {
+                PerformHexEdits5();
+                PerformHexEdits6();
+            }
+        }
+
+        // Sleep to prevent CPU overload
+        Sleep(100);
+    }
+
+    return 0;
 }
 
 HRESULT WINAPI Direct3DShaderValidatorCreate9()
