@@ -20,8 +20,9 @@ There are various issues with higher FPS in game such as:
    - Daily Bugle photo mission 2 (Arsenic Candy beauty contest) - The 3rd girl will walk off the stage instead of stopping to pose and the show will never continue.
    - A random side mission involving the Dragon Tails and bombs inside a bank - The bombs will become too sensitive to movement to be taken outside for disposal.
 
-To fix this a hot key "9" on the keyboard has been added to this fix so that you can switch between the fps limit you give the fix in the ini and 30 fps the origional games fps when you get to any broken 
-part in game you can then switch from the patched high fps to the origional game fps (30) to be able to play any broken parts of the game then after you get past them toggle back to your high fps with the "9" key on your keyboard.
+To fix this a hot key which can be set before you play the game (a message box will apear and tell you what to do)
+this has been added to this fix so that you can switch between the fps limit you give the fix in the ini and 30 fps the origional games fps when you get to any broken 
+part in game you can then switch from the patched high fps to the origional game fps (30) to be able to play any broken parts of the game then after you get past them toggle back to your high fps with the hotkey key you chose.
 
 This just toggles between (30fps) and (uncapped "whatever fps you define in D3D9.INI FPSLimit = " )
 
