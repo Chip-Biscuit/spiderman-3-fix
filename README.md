@@ -26,9 +26,9 @@ part in game you can then switch from the patched high fps to the origional game
 
 This just toggles between (30fps) and (uncapped "whatever fps you define in D3D9.INI FPSLimit = " )
 
-if you would like to leave feedback or submit a bug please use the form provided:
+If you have any issues please go to discord for help 
 
-https://docs.google.com/forms/d/e/1FAIpQLSdgUlQfqXPQBeysBtqYRYWlsJL2BwVn3ZTqOzvrmy5a4z-7iw/viewform?usp=sharing
+https://discord.gg/pZwkHrTF8X
 
 brought to you by Fix Enhancers 
 
